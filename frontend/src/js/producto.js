@@ -3,6 +3,9 @@
  * Lógica de negocio para productos y carrito.
  */
 
+// Se define la URL de Render para conectar la tienda a la nube
+const API_BASE = "https://nube-sz47.onrender.com/api";
+
 // Esta variable contendrá los datos del servidor
 let PRODUCTOS = [];
 
@@ -17,7 +20,8 @@ export function dinero(valor) {
  */
 export async function cargarProductos() {
     try {
-        const response = await fetch("http://localhost:8080/api/productos");
+        // CORREGIDO: Cambiado de http://localhost:8080/api a la URL de Render
+        const response = await fetch(`${API_BASE}/productos`);
         if (!response.ok) throw new Error("Error en servidor");
         PRODUCTOS = await response.json();
         return PRODUCTOS;

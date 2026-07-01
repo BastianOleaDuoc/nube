@@ -3,7 +3,8 @@
  * Lógica de comunicación con el backend para el registro de usuarios
  */
 
-import { API_BASE } from './config'; // Asegúrate de tener tu URL base aquí o reemplázalo por el string directo
+// CORREGIDO: Eliminamos el import que fallaba y declaramos la URL de Render directamente
+const API_BASE = "https://nube-sz47.onrender.com/api";
 
 /**
  * Registra un nuevo usuario en la base de datos de Spring Boot

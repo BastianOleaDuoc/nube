@@ -5,9 +5,13 @@
  * independiente del componente React que lo llame.
  */
 
+// Se define la URL de Render de forma centralizada para este archivo
+const API_BASE = "https://nube-sz47.onrender.com/api";
+
 export async function obtenerDatosPerfil(email) {
     try {
-        const response = await fetch(`http://localhost:8080/api/usuarios/buscar?email=${email}`);
+        // CORREGIDO: Se cambia http://localhost:8080/api por la variable API_BASE de Render
+        const response = await fetch(`${API_BASE}/usuarios/buscar?email=${email}`);
         if (!response.ok) throw new Error("Error en servidor");
         return await response.json();
     } catch (error) {

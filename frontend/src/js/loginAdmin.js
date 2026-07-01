@@ -12,7 +12,8 @@ const API_BASE = "https://nube-sz47.onrender.com/api";
  */
 async function realizarLogin(endpoint, credenciales) {
     try {
-        const response = await fetch(`${API_URL}${endpoint}`, {
+        // CORREGIDO: Se cambia API_URL por API_BASE para usar la URL de Render correctamente
+        const response = await fetch(`${API_BASE}${endpoint}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(credenciales)

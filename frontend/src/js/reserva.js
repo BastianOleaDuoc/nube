@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Se define la URL de Render para conectar el sistema de reservas a la nube
+  const API_BASE = "https://nube-sz47.onrender.com/api";
+
   const reservaForm = document.getElementById('reservaForm');
   const areaPrincipal = document.querySelector('.area-principal');
   const mesaSeleccionadaInput = document.getElementById('mesaSeleccionada');
@@ -22,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!fechaInput || !fechaInput.value) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/api/reservas/ocupadas?fecha=${fechaInput.value}`);
+      // CORREGIDO: Cambiado de http://localhost:8080/api a la URL de Render
+      const response = await fetch(`${API_BASE}/reservas/ocupadas?fecha=${fechaInput.value}`);
       if (response.ok) {
         mesasOcupadas = await response.json();
       }
@@ -87,7 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!payload.numeroMesa) return alert('Por favor, selecciona una mesa.');
 
       try {
-        const response = await fetch("http://localhost:8080/api/reservas", {
+        // CORREGIDO: Cambiado de http://localhost:8080/api a la URL de Render
+        const response = await fetch(`${API_BASE}/reservas`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
@@ -100,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mesaSeleccionada = null;
         consultarMesasOcupadas();
       } catch (error) {
-        alert("Error de conexión. Revisa que el backend esté encendido.");
+        alert("Error de conexión con el servidor de reservas.");
       }
     });
   }
