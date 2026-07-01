@@ -12,6 +12,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/reservas")
+// 🛠️ CONFIGURACIÓN DE CORS PARA EL SISTEMA DE RESERVAS (CLIENTE Y ADMIN)
+@CrossOrigin(
+    origins = {"https://nube-mu.vercel.app", "http://localhost:5173"}, 
+    allowCredentials = "true", 
+    allowedHeaders = "*", 
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
+)
 public class ReservaController {
 
     private static final List<String> ESTADOS_BLOQUEANTES = Arrays.asList("Pendiente", "Confirmada");

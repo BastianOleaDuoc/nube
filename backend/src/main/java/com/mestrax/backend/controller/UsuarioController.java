@@ -11,6 +11,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping({"/api/usuario", "/api/usuarios"})
+// 🛠️ CONFIGURACIÓN DE CORS PARA LOGIN, REGISTRO Y PERFIL DE USUARIOS
+@CrossOrigin(
+    origins = {"https://nube-mu.vercel.app", "http://localhost:5173"}, 
+    allowCredentials = "true", 
+    allowedHeaders = "*", 
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
+)
 public class UsuarioController {
 
     @Autowired

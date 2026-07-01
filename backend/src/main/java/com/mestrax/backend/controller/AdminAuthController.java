@@ -12,6 +12,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/admin")
+
+@CrossOrigin(
+    origins = {"https://nube-mu.vercel.app", "http://localhost:5173"}, 
+    allowCredentials = "true", 
+    allowedHeaders = "*", 
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
+)
 public class AdminAuthController {
 
     @Autowired

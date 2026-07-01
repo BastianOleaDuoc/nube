@@ -9,6 +9,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/dashboard")
+// 🛠️ CONFIGURACIÓN DE CORS PARA LAS MÉTRICAS DEL DASHBOARD
+@CrossOrigin(
+    origins = {"https://nube-mu.vercel.app", "http://localhost:5173"}, 
+    allowCredentials = "true", 
+    allowedHeaders = "*", 
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
+)
 public class DashboardController {
 
     @Autowired
