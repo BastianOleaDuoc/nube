@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { API_BASE } from '../data/productos';
+
+const API_BASE = "https://nube-sz47.onrender.com/api";
 
 export default function Login({ setUsuario }) {
   const navigate = useNavigate();

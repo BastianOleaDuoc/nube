@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-  API_BASE,
   PRODUCTOS_FALLBACK,
   PRODUCTOS_IMAGES,
   dinero,
   normalizeProducto,
 } from '../data/productos';
 
+
+const API_BASE = "https://nube-sz47.onrender.com/api";
+
 export default function ProductoDetalle({ carrito, actualizarCarrito }) {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   
-
   const [notificacion, setNotificacion] = useState('');
 
   useEffect(() => {
@@ -36,7 +37,6 @@ export default function ProductoDetalle({ carrito, actualizarCarrito }) {
 
     cargarProducto();
   }, [id]);
-
 
   useEffect(() => {
     if (notificacion) {
@@ -63,7 +63,6 @@ export default function ProductoDetalle({ carrito, actualizarCarrito }) {
     }
 
     actualizarCarrito(nuevoCarrito);
-
     setNotificacion(`🛒 ${producto.nombre} agregado al carrito`);
   };
 

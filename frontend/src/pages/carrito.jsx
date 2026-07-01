@@ -1,6 +1,9 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { API_BASE, PRODUCTOS_IMAGES, dinero, normalizeCarritoItem } from '../data/productos';
+
+import { PRODUCTOS_IMAGES, dinero, normalizeCarritoItem } from '../data/productos';
+
+const API_BASE = "https://nube-sz47.onrender.com/api";
 
 export default function Carrito({ usuario, carrito, actualizarCarrito }) {
   const [metodoPago, setMetodoPago] = useState('Efectivo');

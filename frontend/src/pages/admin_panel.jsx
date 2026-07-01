@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { API_BASE, dinero } from '../data/productos';
+
+import { dinero } from '../data/productos';
+
+const API_BASE = "https://nube-sz47.onrender.com/api";
 
 const menuItems = [
   { icon: 'bi-speedometer2', label: 'Dashboard' },

@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  API_BASE,
   PRODUCTOS_FALLBACK,
   PRODUCTOS_IMAGES,
   dinero,
   normalizeProducto,
   normalizarTexto,
 } from '../data/productos';
+
+const API_BASE = "https://nube-sz47.onrender.com/api";
 
 const CATEGORIAS = [
   'Todas',

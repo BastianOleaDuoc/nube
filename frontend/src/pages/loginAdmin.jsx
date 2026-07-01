@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
+// CORREGIDO: Declaramos la URL de Render para que no apunte al localhost local
+const API_BASE = "https://nube-sz47.onrender.com/api";
+
 function LoginAdmin({ setAdminActivo }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,7 +13,8 @@ function LoginAdmin({ setAdminActivo }) {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/admin/login", {
+    
+      const response = await fetch(`${API_BASE}/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -40,7 +44,7 @@ function LoginAdmin({ setAdminActivo }) {
 
     } catch (error) {
       console.error("Error al conectar:", error);
-      alert("Error de conexión. Asegúrate de que el backend esté encendido.");
+      alert("Error de conexión con el servidor de administración.");
     }
   };
 
