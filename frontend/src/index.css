@@ -1,0 +1,203 @@
+:root {
+
+  color-scheme: light; 
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #2d3748; 
+
+  background-color: #f0f4ff; 
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { 
+  box-sizing: border-box; 
+}
+
+html, body, #root {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+
+  background: linear-gradient(135deg, #f0f4ff 0%, #fef2f2 50%, #f5f3ff 100%) !important;
+  color: #2d3748;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1a202c !important;
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+p { 
+  margin: 0; 
+  color: #4a5568 !important; 
+}
+
+img { 
+  display: block; 
+  max-width: 100%; 
+}
+
+
+button, .btn {
+
+  border-radius: 999px !important; 
+
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 40%, #f472b6 100%) !important;
+  background-size: 200% auto !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(192, 132, 252, 0.3) !important;
+  transition: all 0.4s ease-in-out !important;
+}
+
+
+button:hover, .btn:hover {
+  background-position: right center !important; 
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(244, 114, 182, 0.5) !important;
+}
+
+code, .counter { 
+  font-family: ui-monospace, Consolas, monospace; 
+}
+
+
+.card, .bg-dark, .bg-black {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 10px 30px rgba(163, 191, 250, 0.15) !important;
+}
+
+
+.card-title, 
+.card-body h5, 
+.card-body h4,
+.product-card h3,
+.product-title {
+  color: #1a202c !important;
+  font-weight: 700 !important;
+}
+
+
+.card-text, 
+.card-body p,
+.product-description,
+.text-muted-dark {
+  color: #4a5568 !important;
+}
+
+
+header .navbar-brand, 
+header h1 a, 
+header .logo-text {
+  color: #1a202c !important;
+}
+
+input, 
+select, 
+textarea, 
+.form-control {
+  color: #2d3748 !important;
+  font-weight: 500 !important;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #2d3748 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.auth-card h1, 
+.auth-card h2, 
+.auth-card h3,
+.auth-panel h2,
+.auth-panel h1 {
+  color: #1a202c !important;
+  font-weight: 800 !important;
+}
+
+
+
+.profile-layout h1,
+.profile-layout h2,
+main h2,
+main h1 {
+  color: #1a202c !important;
+  font-weight: 800 !important;
+}
+
+
+input:disabled, 
+input[disabled], 
+input[readonly],
+.form-control:disabled {
+  color: #2d3748 !important; 
+  -webkit-text-fill-color: #2d3748 !important; 
+  background-color: #f1f5f9 !important; 
+  border: 1px solid #cbd5e1 !important;
+}
+
+
+main p, 
+.card-body p, 
+small,
+.profile-layout span {
+  color: #4a5568 !important;
+}
+
+.auth-card input,
+.auth-card select,
+.auth-card textarea,
+.glass-panel input,
+.glass-panel select,
+.glass-panel textarea,
+.form-control,
+input {
+  color: #2d3748 !important;
+  -webkit-text-fill-color: #2d3748 !important;
+}
+
+
+h1, h2, h3, h4, h5, h6, 
+.auth-card h1, .auth-card h2, .auth-card h3,
+.glass-panel h1, .glass-panel h2, .glass-panel h3,
+.card-title {
+  color: #1a202c !important;
+}
+
+
+label, 
+.form-label, 
+p, 
+span, 
+small, 
+.card-text {
+  color: #4a5568 !important;
+}
+
+
+.badge-modern, .soft-badge, .admin-chip, .mesa-chip {
+  color: inherit !important;
+}
