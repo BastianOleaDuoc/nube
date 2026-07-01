@@ -3,7 +3,7 @@
  * Lógica de autenticación centralizada para el frontend
  */
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://nube-sz47.onrender.com/api";
 
 /**
  * Función genérica de login para evitar duplicar código
