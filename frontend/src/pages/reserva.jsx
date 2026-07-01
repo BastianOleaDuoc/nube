@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { API_BASE } from '../data/productos';
+
+
+const API_BASE = "https://nube-sz47.onrender.com/api";
 
 const RESERVA_IMAGES = {
   fondo: new URL('../img/rustica.png', import.meta.url).href,
@@ -77,12 +79,16 @@ export default function Reserva({ usuario }) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
     if (name === 'fecha' || name === 'hora') setMesaSeleccionada(null);
+    if (error) setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!mesaSeleccionada) return setError('Selecciona una mesa primero.');
     setIsSubmitting(true);
+    setError('');
+    setMensaje('');
+    
     try {
       const response = await fetch(`${API_BASE}/reservas`, {
         method: 'POST',
@@ -119,7 +125,9 @@ export default function Reserva({ usuario }) {
                 <div className="col-md-6"><label>Fecha</label><input type="date" name="fecha" className="form-control" min={fechaMinima} value={form.fecha} onChange={handleChange} required /></div>
                 <div className="col-md-6"><label>Hora</label><input type="time" name="hora" className="form-control" value={form.hora} onChange={handleChange} required /></div>
                 <div className="col-12 text-end">
-                    <button type="submit" className="btn btn-danger" disabled={isSubmitting}>Confirmar Reserva</button>
+                    <button type="submit" className="btn btn-danger" disabled={isSubmitting}>
+                      {isSubmitting ? 'Procesando...' : 'Confirmar Reserva'}
+                    </button>
                 </div>
               </div>
             </form>
@@ -134,10 +142,14 @@ export default function Reserva({ usuario }) {
                 const ocupada = mesasOcupadas.includes(m.id);
                 return (
                   <button key={m.id} 
+                    type="button"
                     className={`mesa ${ocupada ? 'ocupada' : 'libre'} ${mesaSeleccionada === m.id ? 'seleccionada' : ''}`}
                     style={{ position: 'absolute', top: m.top, left: m.left }}
                     disabled={ocupada || !form.fecha || !form.hora}
-                    onClick={() => setMesaSeleccionada(m.id)}>
+                    onClick={() => {
+                      setMesaSeleccionada(m.id);
+                      if (error) setError('');
+                    }}>
                     {m.id}
                   </button>
                 );
