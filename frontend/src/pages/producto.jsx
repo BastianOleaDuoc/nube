@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const API_BASE = "https://nube-nz47.onrender.com/api";
+import {
+  API_BASE,
+  PRODUCTOS_FALLBACK,
+  PRODUCTOS_IMAGES,
+  dinero,
+  normalizeProducto,
+  normalizarTexto,
+} from '../data/productos';
 
 const CATEGORIAS = [
   'Todas',
@@ -15,38 +21,10 @@ const CATEGORIAS = [
   'Bebidas',
 ];
 
-// 🛠️ FUNCIONES DE RESPALDO DIRECTAMENTE AQUÍ PARA EVITAR FALLAS DE IMPORTACIÓN
-function dineroLocal(valor) {
-  const numero = Math.round(Number(valor) || 0);
-  return "$" + numero.toLocaleString("es-CL");
-}
-
-function normalizarTextoLocal(texto) {
-  if (!texto) return "";
-  return texto.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-function normalizeProductoLocal(p) {
-  if (!p) return {};
-  return {
-    id: p.id || p._id,
-    nombre: p.nombre || p.name || "Producto sin nombre",
-    categoria: p.categoria || p.category || "General",
-    precio: Number(p.precio || p.price || 0),
-    estado: p.estado || p.status || "Disponible",
-    img: p.img || p.imagen || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500"
-  };
-}
-
-const FALLBACK_LOCAL = [
-  { id: 1, nombre: "Hamburguesa Mestrax", categoria: "Hamburguesas", precio: 8990, estado: "Disponible", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" },
-  { id: 2, nombre: "Papas Chorrillanas", categoria: "Chorrillanas", precio: 12990, estado: "Disponible", img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500" }
-];
-
 export default function Producto({ carrito, actualizarCarrito }) {
   const [categoria, setCategoria] = useState('Todas');
   const [busqueda, setBusqueda] = useState('');
-  const [productos, setProductos] = useState(FALLBACK_LOCAL);
+  const [productos, setProductos] = useState(PRODUCTOS_FALLBACK);
   const [loading, setLoading] = useState(true);
   const [notificacion, setNotificacion] = useState('');
 
@@ -59,13 +37,12 @@ export default function Producto({ carrito, actualizarCarrito }) {
         }
 
         const data = await response.json();
-        setProductos(Array.isArray(data) && data.length > 0 ? data.map(normalizeProductoLocal) : FALLBACK_LOCAL);
+        setProductos(Array.isArray(data) && data.length > 0 ? data.map(normalizeProducto) : PRODUCTOS_FALLBACK);
       } catch (error) {
         console.error(error);
-        setProductos(FALLBACK_LOCAL);
+        setProductos(PRODUCTOS_FALLBACK);
       } finally {
-        // CORREGIDO: Se cambió 'loading(false)' por 'setLoading(false)'
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -80,17 +57,17 @@ export default function Producto({ carrito, actualizarCarrito }) {
   }, [notificacion]);
 
   const productosFiltrados = useMemo(() => {
-    const textoBusqueda = normalizarTextoLocal(busqueda);
+    const textoBusqueda = normalizarTexto(busqueda);
 
     return productos.filter((producto) => {
       const coincideCategoria = categoria === 'Todas' || producto.categoria === categoria;
-      const coincideBusqueda = normalizarTextoLocal(producto.nombre).includes(textoBusqueda);
+      const coincideBusqueda = normalizarTexto(producto.nombre).includes(textoBusqueda);
       return coincideCategoria && coincideBusqueda;
     });
   }, [productos, categoria, busqueda]);
 
   const agregarAlCarrito = (producto) => {
-    const productoNormalizado = normalizeProductoLocal(producto);
+    const productoNormalizado = normalizeProducto(producto);
 
     if (productoNormalizado.estado !== 'Disponible') {
       setNotificacion(`⚠️ ${productoNormalizado.nombre} no está disponible por ahora`);
@@ -106,7 +83,7 @@ export default function Producto({ carrito, actualizarCarrito }) {
         cantidad: (nuevoCarrito[index].cantidad || 1) + 1,
       };
     } else {
-      nuevoCarrito.push({ ...productoNormalizado, cantidad: 1 });
+      nuevoCarrito.push({ ...productoNormalizado, quantity: 1 });
     }
 
     if (actualizarCarrito) {
@@ -187,7 +164,7 @@ export default function Producto({ carrito, actualizarCarrito }) {
                         alt={producto.nombre}
                         style={{ height: '200px', objectFit: 'cover' }}
                         onError={(event) => {
-                          event.currentTarget.src = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500";
+                          event.currentTarget.src = PRODUCTOS_IMAGES.default || PRODUCTOS_FALLBACK[0].img;
                         }}
                       />
                     </Link>
@@ -198,7 +175,7 @@ export default function Producto({ carrito, actualizarCarrito }) {
                       </div>
                       <p className="card-text text-muted small">{producto.categoria}</p>
                       <p className="card-text fw-bold mt-auto fs-5" style={{ color: '#60a5fa' }}>
-                        {dineroLocal(producto.precio)}
+                        {dinero(producto.precio)}
                       </p>
                       <button
                         className="btn-primary-modern w-100 mt-2 fw-bold"

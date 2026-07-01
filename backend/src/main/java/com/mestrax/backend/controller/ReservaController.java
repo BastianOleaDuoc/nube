@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/reservas")
-// 🛠️ CONFIGURACIÓN DE CORS PARA EL SISTEMA DE RESERVAS (CLIENTE Y ADMIN)
+
 @CrossOrigin(
     origins = {"https://nube-mu.vercel.app", "http://localhost:5173"}, 
     allowCredentials = "true", 
