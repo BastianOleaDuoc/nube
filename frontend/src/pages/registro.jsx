@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-const API_BASE = "https://nube-sz47.onrender.com/api";
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 export default function Registro({ setUsuario }) {
   const navigate = useNavigate();
