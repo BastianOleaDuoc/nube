@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-// CORREGIDO: Declaramos la URL de Render para que no apunte al localhost local
-const API_BASE = "https://nube-sz47.onrender.com/api";
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 function LoginAdmin({ setAdminActivo }) {
   const [email, setEmail] = useState('');
@@ -13,7 +12,6 @@ function LoginAdmin({ setAdminActivo }) {
     e.preventDefault();
 
     try {
-    
       const response = await fetch(`${API_BASE}/admin/login`, {
         method: "POST",
         headers: {

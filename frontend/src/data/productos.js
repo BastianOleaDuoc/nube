@@ -1,4 +1,5 @@
-const API_BASE = "https://nube-sz47.onrender.com/api";
+
+export const API_BASE = "https://nube-nz47.onrender.com/api";
 
 export const PRODUCTOS_IMAGES = {
   mycelium: new URL('../img/mycelium.jpg', import.meta.url).href,

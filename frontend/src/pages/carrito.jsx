@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { PRODUCTOS_IMAGES, dinero, normalizeCarritoItem } from '../data/productos';
 
-const API_BASE = "https://nube-sz47.onrender.com/api";
+
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 export default function Carrito({ usuario, carrito, actualizarCarrito }) {
   const [metodoPago, setMetodoPago] = useState('Efectivo');

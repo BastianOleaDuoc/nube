@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Se define la URL de Render para conectar el sistema de reservas a la nube
-  const API_BASE = "https://nube-sz47.onrender.com/api";
+
+  const API_BASE = "https://nube-nz47.onrender.com/api";
 
   const reservaForm = document.getElementById('reservaForm');
   const areaPrincipal = document.querySelector('.area-principal');

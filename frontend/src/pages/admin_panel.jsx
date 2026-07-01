@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { dinero } from '../data/productos';
 
-const API_BASE = "https://nube-sz47.onrender.com/api";
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 const menuItems = [
   { icon: 'bi-speedometer2', label: 'Dashboard' },

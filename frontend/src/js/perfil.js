@@ -5,8 +5,8 @@
  * independiente del componente React que lo llame.
  */
 
-// Se define la URL de Render de forma centralizada para este archivo
-const API_BASE = "https://nube-sz47.onrender.com/api";
+
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 export async function obtenerDatosPerfil(email) {
     try {

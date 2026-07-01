@@ -3,8 +3,8 @@
  * Lógica de negocio para productos y carrito.
  */
 
-// Se define la URL de Render para conectar la tienda a la nube
-const API_BASE = "https://nube-sz47.onrender.com/api";
+
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 // Esta variable contendrá los datos del servidor
 let PRODUCTOS = [];
@@ -15,12 +15,12 @@ export function dinero(valor) {
     return "$" + numero.toLocaleString("es-CL");
 }
 
-/** * Carga los productos desde Spring Boot 
+/** * Carga los productos desde el servidor 
  * Llamar a esta función desde el useEffect de tu componente Producto.jsx
  */
 export async function cargarProductos() {
     try {
-        // CORREGIDO: Cambiado de http://localhost:8080/api a la URL de Render
+        // CORREGIDO: Cambiado localhost por la constante API_BASE de Render
         const response = await fetch(`${API_BASE}/productos`);
         if (!response.ok) throw new Error("Error en servidor");
         PRODUCTOS = await response.json();

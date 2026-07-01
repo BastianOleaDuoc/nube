@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API_BASE = "https://nube-sz47.onrender.com/api";
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 export default function Contactos() {
   const [mensaje, setMensaje] = useState('');

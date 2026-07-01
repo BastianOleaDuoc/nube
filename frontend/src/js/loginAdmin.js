@@ -3,7 +3,7 @@
  * Lógica de autenticación para Administradores y Usuarios
  */
 
-const API_BASE = "https://nube-sz47.onrender.com/api";
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 /**
  * Realiza el login genérico contra el backend

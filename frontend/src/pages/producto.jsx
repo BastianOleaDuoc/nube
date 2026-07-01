@@ -8,7 +8,8 @@ import {
   normalizarTexto,
 } from '../data/productos';
 
-const API_BASE = "https://nube-sz47.onrender.com/api";
+
+const API_BASE = "https://nube-nz47.onrender.com/api";
 
 const CATEGORIAS = [
   'Todas',
@@ -43,7 +44,7 @@ export default function Producto({ carrito, actualizarCarrito }) {
         console.error(error);
         setProductos(PRODUCTOS_FALLBACK);
       } finally {
-        setLoading(false);
+        loading(false);
       }
     };
 
